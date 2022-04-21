@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 150.158.78.9:8848
+        namespace: 12dea606-2f2d-499e-88c8-49f552f1a7cc
+      config:
+        server-addr: 150.158.78.9:8848
+        namespace: 12dea606-2f2d-499e-88c8-49f552f1a7cc
+        group: dev
+        file-extension: yaml
+        extension-configs[0]:
+          data-id: ${spring.application.name}-datasource-dev.yaml
+          group: dev
+          refresh: true
+        extension-configs[1]:
+          data-id: ${spring.application.name}-other-dev.yaml
+          group: dev
+          refresh: true
+#        extension-configs[2]:
+#          data-id: ${spring.application.name}-customize-dev.yaml
+#          group: dev
+#          refresh: true
