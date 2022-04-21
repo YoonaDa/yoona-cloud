@@ -36,13 +36,13 @@ public class CodeGeneratorUtil {
 
     public static final String JDBC_PASSWORD = "DD123456aa";
 
-    public static final String PARENT_PACKAGE = "com.yoona";
+    public static final String PARENT_PACKAGE = "com.yoona.cloud.auth.server";
 
     public static final String OUTPUT_DIR = "E:\\projects\\mine\\github\\yoona-cloud\\yoona-cloud-auth-server";
 
     public static final String[] TABLE_PREFIX = new String[]{"t_", "sys_"};
 
-    public static final String[] INCLUDE_TABLES = new String[]{"sys_user", "sys_role"};
+    public static final String[] INCLUDE_TABLES = new String[]{"sys_user", "sys_role", "sys_user_role"};
 
     public static void main(String[] args) {
         GenerateConfig config = new GenerateConfig();

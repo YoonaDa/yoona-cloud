@@ -8,7 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 /**
  * @author YoonaDa
  */
-//@MapperScan("com.yoona.user.mapper")
+@MapperScan("com.yoona.cloud.auth.server.mapper")
 @EnableDiscoveryClient
 @SpringBootApplication
 public class YoonaCloudAuthServerApplication {
