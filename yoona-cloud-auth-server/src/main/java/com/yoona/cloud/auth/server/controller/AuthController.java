@@ -1,8 +1,7 @@
 package com.yoona.cloud.auth.server.controller;
 
-
-import com.yoona.cloud.auth.server.service.RoleService;
-import com.yoona.cloud.auth.server.vo.RoleAddVO;
+import com.yoona.cloud.auth.server.service.AuthService;
+import com.yoona.cloud.auth.server.vo.RegisterVO;
 import com.yoona.cloud.common.response.BaseResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -13,26 +12,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>
- * 系统角色表 前端控制器
- * </p>
- *
- * @author yoonada
- * @since 2022-04-21
+ * @author YoonaDa
+ * @email lintiaoda@suntang.com
+ * @description: 认证
+ * @date 2022-04-22 09:57
  */
-@Api(tags = "角色")
+@Api(tags = "认证")
 @RestController
-@RequestMapping("/role")
+@RequestMapping("/auth")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class RoleController {
+public class AuthController {
 
-    private final RoleService roleService;
+    private final AuthService authService;
 
-    @ApiOperation("新增角色")
-    @PostMapping("/add")
-    public BaseResponse add(RoleAddVO vo){
-        return roleService.add(vo);
+    @ApiOperation("注册")
+    @PostMapping("/register")
+    public BaseResponse register(RegisterVO vo){
+        return authService.register(vo);
     }
 
 }
-

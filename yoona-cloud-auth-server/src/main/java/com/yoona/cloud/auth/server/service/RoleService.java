@@ -2,6 +2,8 @@ package com.yoona.cloud.auth.server.service;
 
 import com.yoona.cloud.auth.server.entity.Role;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.yoona.cloud.auth.server.vo.RoleAddVO;
+import com.yoona.cloud.common.response.BaseResponse;
 
 /**
  * <p>
@@ -13,4 +15,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface RoleService extends IService<Role> {
 
+    /**
+     * 新增角色
+     * @param vo
+     * @return
+     */
+    BaseResponse add(RoleAddVO vo);
 }

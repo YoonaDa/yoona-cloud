@@ -42,7 +42,7 @@ public class CodeGeneratorUtil {
 
     public static final String[] TABLE_PREFIX = new String[]{"t_", "sys_"};
 
-    public static final String[] INCLUDE_TABLES = new String[]{"sys_user", "sys_role", "sys_user_role"};
+    public static final String[] INCLUDE_TABLES = new String[]{"sys_menu", "sys_role_menu"};
 
     public static void main(String[] args) {
         GenerateConfig config = new GenerateConfig();

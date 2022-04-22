@@ -44,6 +44,7 @@ public class BaseEntity implements Serializable {
 
     @TableLogic
     @ApiModelProperty(value = "是否删除：0、未删除；1、删除")
+    @TableField(value = "is_delete", fill = FieldFill.INSERT_UPDATE)
     private Integer isDelete;
 
 }

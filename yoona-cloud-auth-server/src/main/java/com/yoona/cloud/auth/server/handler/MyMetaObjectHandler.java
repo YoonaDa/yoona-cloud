@@ -1,4 +1,4 @@
-package com.yoona.cloud.common.handler;
+package com.yoona.cloud.auth.server.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +27,10 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         Object updateTime = this.getFieldValByName("updateTime", metaObject);
         if (null == updateTime) {
             this.setFieldValByName("updateTime", localDateTime, metaObject);
+        }
+        Object isDelete = this.getFieldValByName("isDelete", metaObject);
+        if (null == isDelete) {
+            this.setFieldValByName("isDelete", 0, metaObject);
         }
     }
 

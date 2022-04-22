@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.yoona.cloud.common.entity.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.yoona.cloud.common.enums.StatusEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

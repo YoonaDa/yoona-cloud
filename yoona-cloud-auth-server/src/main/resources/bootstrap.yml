@@ -7,3 +7,7 @@ server:
   port: 8000
   servlet:
     context-path: /api
+customize:
+  antMatchers: "/doc.html,/webjars/**,/img.icons/**,/swagger-resources/**,/v2/api-docs,/login,/refreshToken,/role/**,/auth/register,/auth/login"
+
+

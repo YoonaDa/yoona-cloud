@@ -11,7 +11,6 @@
         <result column="role_id" property="roleId" />
         <result column="role_name" property="roleName" />
         <result column="role_description" property="roleDescription" />
-        <result column="status" property="status" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -19,7 +18,7 @@
         create_time,
         update_time,
         is_delete,
-        id, role_id, role_name, role_description, status
+        id, role_id, role_name, role_description
     </sql>
 
 </mapper>

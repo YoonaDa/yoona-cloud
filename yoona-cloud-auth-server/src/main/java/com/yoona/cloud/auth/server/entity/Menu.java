@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 系统角色表
+ * 系统菜单表
  * </p>
  *
  * @author yoonada
@@ -19,9 +19,9 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName("sys_role")
-@ApiModel(value="Role对象", description="系统角色表")
-public class Role extends BaseEntity {
+@TableName("sys_menu")
+@ApiModel(value="Menu对象", description="系统菜单表")
+public class Menu extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,14 +29,26 @@ public class Role extends BaseEntity {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "唯一的角色id")
-    private String roleId;
+    @ApiModelProperty(value = "菜单id")
+    private String menuId;
 
-    @ApiModelProperty(value = "角色名称")
-    private String roleName;
+    @ApiModelProperty(value = "菜单名")
+    private String menuName;
 
-    @ApiModelProperty(value = "角色描述")
-    private String roleDescription;
+    @ApiModelProperty(value = "菜单父id")
+    private String menuPid;
+
+    @ApiModelProperty(value = "描述")
+    private String menuDescription;
+
+    @ApiModelProperty(value = "菜单地址")
+    private String url;
+
+    @ApiModelProperty(value = "排序")
+    private Integer sort;
+
+    @ApiModelProperty(value = "状态")
+    private String status;
 
 
 }

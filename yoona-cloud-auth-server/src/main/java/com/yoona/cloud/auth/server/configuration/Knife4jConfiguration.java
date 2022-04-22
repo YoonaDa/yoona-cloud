@@ -31,7 +31,7 @@ public class Knife4jConfiguration {
                 //分组名称
                 .select()
                 //这里指定Controller扫描包路径
-                .apis(RequestHandlerSelectors.basePackage("com.yoona.user.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.yoona.cloud.auth.server.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
