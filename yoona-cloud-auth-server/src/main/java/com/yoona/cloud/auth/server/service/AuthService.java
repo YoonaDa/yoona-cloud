@@ -1,5 +1,6 @@
 package com.yoona.cloud.auth.server.service;
 
+import com.yoona.cloud.auth.server.vo.LoginVO;
 import com.yoona.cloud.auth.server.vo.RegisterVO;
 import com.yoona.cloud.common.response.BaseResponse;
 
@@ -17,4 +18,17 @@ public interface AuthService {
      * @return
      */
     BaseResponse register(RegisterVO vo);
+
+    /**
+     * 登录
+     * @param vo
+     * @return
+     */
+    BaseResponse login(LoginVO vo);
+
+    /**
+     * 获取用户信息
+     * @return
+     */
+    BaseResponse getUserInfo();
 }

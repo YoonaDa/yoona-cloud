@@ -1,7 +1,7 @@
 package com.yoona.cloud.auth.server.configuration;
 
 import com.alibaba.fastjson.JSON;
-import com.yoona.cloud.auth.server.filter.TokenAuthenticationFilter;
+import com.yoona.cloud.auth.server.filter.JwtAuthenticationTokenFilter;
 import com.yoona.cloud.auth.server.handler.EntryPointUnauthorizedHandler;
 import com.yoona.cloud.auth.server.handler.RequestAccessDeniedHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -38,9 +37,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private String antMatchers;
 
     @Resource
-    private JwtAuthenticationSecurityConfig jwtAuthenticationSecurityConfig;
-
-    @Resource
     private EntryPointUnauthorizedHandler entryPointUnauthorizedHandler;
 
     @Resource
@@ -53,9 +49,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin()
                 //禁用表单登录，前后端分离用不上
                 .disable()
-                //应用登录过滤器的配置，配置分离
-                .apply(jwtAuthenticationSecurityConfig)
-                .and()
                 // 设置URL的授权
                 .authorizeRequests()
                 // 这里需要将登录页面放行,permitAll()表示不再拦截，/login 登录的url，/refreshToken刷新token的url
@@ -74,16 +67,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //禁用session，JWT校验不需要session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                //将TOKEN校验过滤器配置到过滤器链中，否则不生效，放到UsernamePasswordAuthenticationFilter之前
-                .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class)
+                .addFilter(new JwtAuthenticationTokenFilter(authenticationManager()))
                 // 关闭csrf
                 .csrf().disable();
-    }
-
-    // 自定义的Jwt Token校验过滤器
-    @Bean
-    public TokenAuthenticationFilter authenticationTokenFilterBean() {
-        return new TokenAuthenticationFilter();
     }
 
     /**
