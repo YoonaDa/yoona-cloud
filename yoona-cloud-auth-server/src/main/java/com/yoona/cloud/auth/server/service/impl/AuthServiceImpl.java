@@ -50,6 +50,11 @@ public class AuthServiceImpl implements AuthService {
 
     private final SelfUserDetailsServiceImpl selfUserDetailsService;
 
+    /**
+     * 注册
+     * @param vo
+     * @return
+     */
     @Override
     public BaseResponse register(RegisterVO vo) {
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<User>()
@@ -76,6 +81,11 @@ public class AuthServiceImpl implements AuthService {
         return SystemResponse.fail("注册失败");
     }
 
+    /**
+     * 登录
+     * @param vo
+     * @return
+     */
     @Override
     public BaseResponse login(LoginVO vo) {
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<User>()
@@ -87,6 +97,9 @@ public class AuthServiceImpl implements AuthService {
         }
         if (!PasswordUtil.checkPassword(vo.getPassword(), user.getPassword())) {
             return SystemResponse.fail("密码错误");
+        }
+        if (StatusEnum.DISABLED.getCode().equals(user.getStatus())){
+            return SystemResponse.fail("账号已被冻结，请联系管理员");
         }
         SelfUser selfUser = selfUserDetailsService.loadUserByUsername(vo.getUsername());
         Set<GrantedAuthority> authorities = getGrantedAuthorities(selfUser);
@@ -112,6 +125,11 @@ public class AuthServiceImpl implements AuthService {
     }
 
 
+    /**
+     * 获取角色列表
+     * @param selfUser
+     * @return
+     */
     private Set<GrantedAuthority> getGrantedAuthorities(SelfUser selfUser) {
         // 角色集合
         Set<GrantedAuthority> authorities = new HashSet<>();

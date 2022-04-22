@@ -4,10 +4,13 @@ package com.yoona.cloud.auth.server.controller;
 import com.yoona.cloud.auth.server.service.RoleService;
 import com.yoona.cloud.auth.server.vo.RoleAddVO;
 import com.yoona.cloud.common.response.BaseResponse;
+import com.yoona.cloud.common.response.SystemResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +35,13 @@ public class RoleController {
     @PostMapping("/add")
     public BaseResponse add(RoleAddVO vo){
         return roleService.add(vo);
+    }
+
+    @PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
+    @ApiOperation("列表")
+    @GetMapping("/list")
+    public BaseResponse list(){
+        return SystemResponse.success(roleService.list());
     }
 
 }

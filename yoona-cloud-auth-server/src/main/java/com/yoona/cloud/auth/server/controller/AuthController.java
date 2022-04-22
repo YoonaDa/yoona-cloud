@@ -1,6 +1,5 @@
 package com.yoona.cloud.auth.server.controller;
 
-import com.yoona.cloud.auth.server.entity.SelfUser;
 import com.yoona.cloud.auth.server.service.AuthService;
 import com.yoona.cloud.auth.server.vo.LoginVO;
 import com.yoona.cloud.auth.server.vo.RegisterVO;
@@ -9,7 +8,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
