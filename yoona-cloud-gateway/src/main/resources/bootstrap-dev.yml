@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 150.158.78.9:8848
+        namespace: 12dea606-2f2d-499e-88c8-49f552f1a7cc
+      config:
+        server-addr: 150.158.78.9:8848
+        namespace: 12dea606-2f2d-499e-88c8-49f552f1a7cc
+        group: dev
+        file-extension: yaml
+        refresh-enabled: true

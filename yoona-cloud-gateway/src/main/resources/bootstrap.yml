@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: yoona-cloud-gateway
+server:
+  port: 9527
